@@ -1,7 +1,4 @@
 # ServiceSquad
-
-## Phase 4 Full-Stack Application Project
-
 ---
 
 ## Introduction
@@ -19,10 +16,12 @@ A user is able to:
 In your terminal, run:
 - $ pipenv install && pipenv shell
 - $ cd server
+- $ python app.py
 
 In another terminal, run React from the project root directory:
-- $ npm install --prefix client
-- $ npm start --prefix client
+- $ cd client
+- $ npm install
+- $ npm start
 
 
 ## About Us
