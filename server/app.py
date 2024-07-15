@@ -8,17 +8,19 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-@app.before_request
-def check_log_status():
-    open_access_list = [
-        'signup',
-        'login',
-        'check_session',
-        'opportunities',
-        'organizations'
-    ]
-    if request.endpoint not in open_access_list and (not session.get('volunteer_id')):
-        return make_response({"error": "401 Unauthorized"}, 401)
+# @app.before_request
+# def check_log_status():
+#     print("HERE")
+#     open_access_list = [
+#         'api/signup',
+#         'api/login',
+#         'api/check_session',
+#         'api/opportunities',
+#         'api/organizations',
+#         '/api/home'
+#     ]
+#     if request.endpoint not in open_access_list and (not session.get('volunteer_id')):
+#         return make_response({"error": "401 Unauthorized"}, 401)
 
 class Home(Resource):
     def get(self):

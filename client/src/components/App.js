@@ -18,7 +18,7 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    {
+    { console.log("before")
       fetch("/api/check_session")
         .then((resp) => {
           if (resp.ok) {

@@ -7,7 +7,7 @@ from sqlalchemy import MetaData
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+# load_dotenv()
 app = Flask(__name__,
     static_url_path='',
     static_folder='../client/build',

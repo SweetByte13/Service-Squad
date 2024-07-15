@@ -181,7 +181,7 @@ def seed_database():
         dates='06/25/2023',
         duration='06/25/2023 08/25/2023',
         organization_id=j.id,
-        volunteer_id='null'
+        
     )
         p=Opportunity(
         title='Healthcare Assistant',
@@ -191,7 +191,7 @@ def seed_database():
         dates='07/30/2023',
         duration='07/30/2023 09/30/2023',
         organization_id=k.id,
-        volunteer_id='null'
+        
     )
         q=Opportunity(
         title='Art Workshop Facilitator',
@@ -201,7 +201,6 @@ def seed_database():
         dates='08/04/2023',
         duration='08/04/2023 10/04/2023',
         organization_id=l.id,
-        volunteer_id='null'
     )
         r=Opportunity(
         title='Environmental Advocate',
@@ -221,7 +220,6 @@ def seed_database():
         dates='10/14/2023',
         duration='10/14/2023 12/14/2023',
         organization_id=i.id,
-        volunteer_id='null'
     )
         t=Opportunity(
         title='Community Outreach Volunteer',
@@ -231,7 +229,6 @@ def seed_database():
         dates='11/19/2023',
         duration='11/19/2023 01/19/2024',
         organization_id=g.id,
-        volunteer_id='null'
     )
         opportunities.append(m)
         opportunities.append(n)
