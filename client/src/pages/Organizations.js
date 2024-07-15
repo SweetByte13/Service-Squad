@@ -11,7 +11,7 @@ function Organizations({ user, setUser}) {
   const [searchOrg, setSearchOrg] = useState("")
 
   useEffect(() => {
-    fetch("/organizations")
+    fetch("/api/organizations")
         .then((resp) => {
             if (resp.ok) {
                 return resp.json();

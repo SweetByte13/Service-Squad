@@ -65,4 +65,5 @@ instance
 .vscode
 package-lock.json
 
+#Ignore Flask Enviorment Setup
 .env

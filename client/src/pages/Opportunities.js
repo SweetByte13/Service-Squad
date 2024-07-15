@@ -6,7 +6,7 @@ import OppDropdownFilter from "../components/OppDropdownFilter";
 function Opportunities({ user, setUser }) {
     const [opps, setOpps] = useState([])
     useEffect(() => {
-        fetch("/opportunities")
+        fetch("/api/opportunities")
             .then((resp) => {
                 console.log(resp)
                 if (resp.ok) {

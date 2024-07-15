@@ -14,8 +14,7 @@ function LoginForm({ user, setUser }) {
     })
 
     const handleSubmit = (values, {setSubmitting}) => {
-        console.log("form submitted")
-        fetch("/login", {
+        fetch("/api/login", {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json'

@@ -8,7 +8,7 @@ function Opportunity({ user, setUser }) {
     const [opp, setOpp] = useState(null)
 
     useEffect(() => {
-        fetch(`/opportunities/${id}`)
+        fetch(`/api/opportunities/${id}`)
             .then((resp) => {
                 if (resp.ok) {
                     return resp.json();

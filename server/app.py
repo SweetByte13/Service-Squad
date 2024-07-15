@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-
 from flask import request, session, make_response
 from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
 from config import app, db, api
 from models import Volunteer, Organization, Opportunity
+from dotenv import load_dotenv
+load_dotenv()
 
 
 @app.before_request
@@ -258,17 +259,17 @@ class VolunteerById(Resource):
         else:
             return make_response({"error": "Volunteer not found"}, 404)
 
-api.add_resource(Home, '/home')
-api.add_resource(CheckSession, '/check_session', endpoint='check_session')
-api.add_resource(Login, '/login')
-api.add_resource(Signup, '/signup')
-api.add_resource(Logout, '/logout', endpoint='logout')
-api.add_resource(Opportunities, '/opportunities')
-api.add_resource(OpportunityById, '/opportunities/<int:id>')
-api.add_resource(Volunteers, '/volunteer')
-api.add_resource(VolunteerById, '/volunteer/<int:id>')
-api.add_resource(Organizations, '/organizations')
-api.add_resource(OrganizationById, '/organizations/<int:id>')
+api.add_resource(Home, '/api/home')
+api.add_resource(CheckSession, '/api/check_session', endpoint='check_session')
+api.add_resource(Login, '/api/login')
+api.add_resource(Signup, '/api/signup')
+api.add_resource(Logout, '/api/logout', endpoint='logout')
+api.add_resource(Opportunities, '/api/opportunities')
+api.add_resource(OpportunityById, '/api/opportunities/<int:id>')
+api.add_resource(Volunteers, '/api/volunteer')
+api.add_resource(VolunteerById, '/api/volunteer/<int:id>')
+api.add_resource(Organizations, '/api/organizations')
+api.add_resource(OrganizationById, '/api/organizations/<int:id>')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
