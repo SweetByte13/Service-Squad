@@ -2,6 +2,12 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Router, Link } from "react-router-dom";
+import logo1 from "../images/logo1.png";
+import logo2 from "../images/logo2.jpeg";
+import logo3 from "../images/logo3.png";
+import logo4 from "../images/logo4.jpeg";
+import logo5 from "../images/logo5.png";
+import logo6 from "../images/logo6.jpg";
 
 function OrganizationCard({org}) {
   const {name, website, category, opportunities} = org
@@ -11,6 +17,9 @@ function OrganizationCard({org}) {
       <Link  to={`../opportunities/${opp.id}`} >{opp.title}</Link>
     </div>)
   })
+
+  let images = [logo1,logo2,logo3,logo4,logo5,logo6]
+  let img = images[Math.floor(Math.random() * images.length)];
 
     return (
       <Card className="org-card"> 
@@ -26,6 +35,9 @@ function OrganizationCard({org}) {
           <div className="buttons">
           </div>
         </Card.Body>
+        </div>
+        <div className="orgcard-img">
+          <img className="card-logo" src={img} alt="Organization"/>
         </div>
       </Card>
     )

@@ -8,6 +8,7 @@ function Opportunities({ user, setUser }) {
     useEffect(() => {
         fetch("/opportunities")
             .then((resp) => {
+                console.log(resp)
                 if (resp.ok) {
                     return resp.json();
                 }

@@ -43,8 +43,8 @@ function ProfileForm({ setUser }) {
         setSubmitting(false);
     }
 
-    const handleAccountDelete =(values) => {
-        if (!window.confirm("Are you sure you want to delete your account?")){
+    const handleAccountDelete = (values) => {
+        if (!window.confirm("Are you sure you want to delete your account?")) {
             return;
         }
         const endpoint = `/volunteer/${user.id}`
@@ -173,13 +173,12 @@ function ProfileForm({ setUser }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        
-                        <div className="button-container-left">
-                            <button type='submit'>Submit</button>
-                        </div>
-                        <div className="button-container-right">
-                            <button onClick={() => handleAccountDelete()}>Delete Account</button>
-                        </div>
+                            <div className="button-submit">
+                                <button type='submit'>Submit</button>
+                            </div>
+                            <div>
+                                <button className="button-delete" onClick={() => handleAccountDelete()}>Delete Account</button>
+                            </div>
                     </form>
                 )}
             </Formik>

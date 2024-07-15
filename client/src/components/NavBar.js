@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.jpeg";
+import logo from "../images/logo.jpeg";
 import { AppContext } from "../context/Context";
 
 function NavBar() {
@@ -49,11 +49,11 @@ function NavBar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto pt-2">
-              <Nav.Link className="nav-link" href="#about" onClick={handleAboutClick}>About</Nav.Link>
+              <Nav.Link className="nav-link" href="#aboutss" onClick={handleAboutClick}>About</Nav.Link>
               <Nav.Link className="nav-link" href="/opportunities">Opportunities</Nav.Link>
               <Nav.Link className="nav-link" href="/organizations">Organizations</Nav.Link>
-              <Nav.Link className="nav-link" href="/profile">Profile</Nav.Link>
-              {user === null || user === undefined ? <Nav.Link className="nav-link" href="/signup">Signup</Nav.Link>: ""}
+              {user === null || user === undefined ? "" : <Nav.Link className="nav-link" href="/profile">Profile</Nav.Link> }
+              {user === null || user === undefined ? <Nav.Link className="nav-link" href="/signup">Signup</Nav.Link> : ""}
             </Nav>
            {user === null || user === undefined ? <Button className="navbar-login-btn" onClick={handleLogInClick}>Login</Button> : <Button className="navbar-login-btn" onClick={handleLogoutClick}>Logout</Button>}
           </Navbar.Collapse>

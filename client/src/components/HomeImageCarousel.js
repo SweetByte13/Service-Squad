@@ -1,10 +1,10 @@
 import React from "react"; 
 import { useNavigate } from "react-router-dom";
 import Carousel from 'react-bootstrap/Carousel';
-import Image1 from "../assets/Image1.jpg";
-import Image2 from "../assets/Image2.jpg";
-import Image3 from "../assets/Image3.jpg";
-import Image4 from "../assets/Image4.jpg";
+import Image1 from "../images/Image1.jpg";
+import Image2 from "../images/Image2.jpg";
+import Image3 from "../images/Image3.jpg";
+import Image4 from "../images/Image4.jpg";
 
 
 function HomeImageCarousel() {
