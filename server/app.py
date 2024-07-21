@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from flask import request, session, make_response
+from flask import render_template, request, session, make_response
 from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
 from config import app, db, api
@@ -7,20 +7,9 @@ from models import Volunteer, Organization, Opportunity
 from dotenv import load_dotenv
 load_dotenv()
 
-
-# @app.before_request
-# def check_log_status():
-#     print("HERE")
-#     open_access_list = [
-#         'api/signup',
-#         'api/login',
-#         'api/check_session',
-#         'api/opportunities',
-#         'api/organizations',
-#         '/api/home'
-#     ]
-#     if request.endpoint not in open_access_list and (not session.get('volunteer_id')):
-#         return make_response({"error": "401 Unauthorized"}, 401)
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("index.html")
 
 class Home(Resource):
     def get(self):

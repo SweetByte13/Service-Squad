@@ -36,7 +36,7 @@ return (
     <AppContext.Provider
       value={{user, setUser}}
     >
-      <div>
+      <>
         <Routes>
           <Route path="/" element={<Home user={user} setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} user={user}/>} />
@@ -46,7 +46,7 @@ return (
           <Route path="/organizations" element={<Organizations setUser={setUser} user={user} />} />
           <Route path="/signup" element={<SignUp setUser={setUser} user={user}/>} />
         </Routes>
-      </div>
+      </>
     </AppContext.Provider>
   </>
 );
