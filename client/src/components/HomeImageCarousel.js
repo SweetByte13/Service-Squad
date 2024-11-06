@@ -5,7 +5,8 @@ import Image1 from "../images/Image1.jpg";
 import Image2 from "../images/Image2.jpg";
 import Image3 from "../images/Image3.jpg";
 import Image4 from "../images/Image4.jpg";
-
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 function HomeImageCarousel() {
     
@@ -13,51 +14,51 @@ function HomeImageCarousel() {
 
     function handleGetStarted() {
         navigate("/signup")
-      }
+    }
 
-  return (
-    <div className="carousel-container">
-        <Carousel>
-            <Carousel.Item interval={3000}>
-                <img
-                    className="carousel-image"
-                    src={Image1}
-                    alt="First slide"
-                />
-            </Carousel.Item>
-            <Carousel.Item interval={3000}>
-                <img
-                    className="carousel-image"
-                    src={Image2}
-                    alt="Second slide"
-                />
-            </Carousel.Item>
-            <Carousel.Item interval={3000}>
-                <img
-                    className="carousel-image"
-                    src={Image3}
-                    alt="Third slide"
-                />
-            </Carousel.Item>
-            <Carousel.Item interval={3000}>
-                <img
-                    className="carousel-image"
-                    src={Image4}
-                    alt="Fourth slide"
-                />
-            </Carousel.Item>
-        </Carousel>
-        <div className="overlay">
-            <h1>
-                Serve your community
-            </h1>
-            <h4>
-                ServiceSquad connects you to service opportunities right within your own community.
-            </h4>
-            <button className="button" onClick={handleGetStarted}>Get Started</button>
-        </div>
-    </div>
-  );
+    return (
+        <Container fluid className="carousel-container p-0">
+            <Carousel>
+                <Carousel.Item interval={3000}>
+                    <img
+                        className="carousel-image d-block w-100"
+                        src={Image1}
+                        alt="First slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item interval={3000}>
+                    <img
+                        className="carousel-image d-block w-100"
+                        src={Image2}
+                        alt="Second slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item interval={3000}>
+                    <img
+                        className="carousel-image d-block w-100"
+                        src={Image3}
+                        alt="Third slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item interval={3000}>
+                    <img
+                        className="carousel-image d-block w-100"
+                        src={Image4}
+                        alt="Fourth slide"
+                    />
+                </Carousel.Item>
+            </Carousel>
+            <div className="overlay text-center">
+                <h1>
+                    Serve your community
+                </h1>
+                <h4>
+                    ServiceSquad connects you to service opportunities right within your own community.
+                </h4>
+                <Button className="mt-3" variant="success" onClick={handleGetStarted}>Get Started</Button>
+            </div>
+        </Container>
+    );
 }
 
 export default HomeImageCarousel;

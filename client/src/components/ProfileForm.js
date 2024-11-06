@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Formik } from 'formik';
-import * as yup from 'yup'
+import * as yup from 'yup';
 import { Container } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/Context";
@@ -9,6 +9,8 @@ function ProfileForm({ setUser }) {
     const navigate = useNavigate();
     const useAppContext = () => useContext(AppContext);
     const { user } = useAppContext();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const profileSchema = yup.object().shape({
         firstName: yup.string().min(1, 'First name too short!').max(15, 'First name too long!'),
@@ -19,10 +21,11 @@ function ProfileForm({ setUser }) {
         interests: yup.string().required('Interest is required!'),
         skills: yup.string().required('Skills are required!'),
         hoursWanted: yup.number().integer().min(1, 'Minimum of 1 hour required!'),
-    })
+    });
 
     const handleFormSubmit = (values, { setSubmitting }) => {
-        const endpoint = `/api/volunteer/${user.id}`
+        setLoading(true);
+        const endpoint = `/api/volunteer/${user.id}`;
         fetch(endpoint, {
             method: 'PATCH',
             headers: {
@@ -31,54 +34,60 @@ function ProfileForm({ setUser }) {
             body: JSON.stringify(values)
         }).then((resp) => {
             if (resp.ok) {
-                return resp.json()
+                return resp.json();
             } else {
-                alert('Invalid credentials')
+                throw new Error('Invalid credentials');
             }
         }).then((user) => {
             setUser(user);
             console.log(user);
             navigate("/");
+        }).catch((error) => {
+            setError(error.message);
+        }).finally(() => {
+            setSubmitting(false);
+            setLoading(false);
         });
-        setSubmitting(false);
-    }
+    };
 
-    const handleAccountDelete = (values) => {
+    const handleAccountDelete = () => {
         if (!window.confirm("Are you sure you want to delete your account?")) {
             return;
         }
-        const endpoint = `/api/volunteer/${user.id}`
+        const endpoint = `/api/volunteer/${user.id}`;
         fetch(endpoint, {
             method: 'DELETE',
             headers: {
                 "Content-Type": 'application/json'
-            },
-            body: JSON.stringify(values)
+            }
         }).then((resp) => {
             if (resp.ok) {
-                alert('Your account has been deleted. We are sorry to see you go!')
-                setUser(null)
-                navigate("/")
+                alert('Your account has been deleted. We are sorry to see you go!');
+                setUser(null);
+                navigate("/");
             } else {
-                alert('Invalid credentials')
+                throw new Error('Invalid credentials');
             }
+        }).catch((error) => {
+            setError(error.message);
         });
-    }
+    };
 
     const initialValues = {
-        firstName: user === null || user === undefined ? '' : user.first_name,
-        lastName: user === null || user === undefined ? '' : user.last_name,
-        email: user === null || user === undefined ? '' : user.email,
-        phoneNumber: user === null || user === undefined ? '' : user.phone_number,
-        zipCode: user === null || user === undefined ? '' : user.zipcode,
-        interests: user === null || user === undefined ? '' : user.interests,
-        skills: user === null || user === undefined ? '' : user.skills,
-        hoursWanted: user === null || user === undefined ? '' : user.hours_wanted
-    }
+        firstName: user?.first_name || '',
+        lastName: user?.last_name || '',
+        email: user?.email || '',
+        phoneNumber: user?.phone_number || '',
+        zipCode: user?.zipcode || '',
+        interests: user?.interests || '',
+        skills: user?.skills || '',
+        hoursWanted: user?.hours_wanted || ''
+    };
 
     return (
         <Container className="profile-container">
-            <Formik enableReinitialize
+            <Formik
+                enableReinitialize
                 initialValues={initialValues}
                 validationSchema={profileSchema}
                 onSubmit={handleFormSubmit}
@@ -173,18 +182,18 @@ function ProfileForm({ setUser }) {
                                 onChange={handleChange}
                             />
                         </div>
-                            <div className="button-submit">
-                                <button type='submit'>Submit</button>
-                            </div>
-                            <div>
-                                <button className="button-delete" onClick={() => handleAccountDelete()}>Delete Account</button>
-                            </div>
+                        <div className="button-submit">
+                            <button type='submit' disabled={loading}>{loading ? 'Submitting...' : 'Submit'}</button>
+                        </div>
+                        <div>
+                            <button type="button" className="button-delete" onClick={handleAccountDelete}>Delete Account</button>
+                        </div>
+                        {error && <p className="error">{error}</p>}
                     </form>
                 )}
             </Formik>
         </Container>
-    )
+    );
 }
 
 export default ProfileForm;
-
