@@ -89,16 +89,16 @@
 }
 
 .nav-link:hover {
-  color: #d6742e; /* Slightly darker blue on hover */
+  color: #198754; /* Slightly darker blue on hover */
 }
 
 .navbar-login-btn {
-  background-color: #db7d3a;
+  background-color: #198754;
   color: white;
 }
 
 .navbar-login-btn:hover {
-  background-color: #d6742e;
+  background-color: #198754;
 }
 
 @media (max-width: 768px) {
@@ -143,13 +143,13 @@
 }
 
 .apply-button {
-  background-color: #007bff;
+  background-color: #198754;
   color: white;
   border: none;
 }
 
 .apply-button:hover {
-  background-color: #0056b3;
+  background-color: #198754;
 }
 
 @media (max-width: 768px) {
@@ -238,13 +238,13 @@
 }
 
 .apply-button {
-  background-color: #007bff;
+  background-color: #198754;
   color: white;
   border: none;
 }
 
 .apply-button:hover {
-  background-color: #0056b3;
+  background-color: #198754;
 }
 
 @media (max-width: 768px) {
@@ -362,7 +362,7 @@ input {
 }
 
 .button-submit button, .button-delete {
-  background-color: #007bff;
+  background-color: #198754;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -382,7 +382,7 @@ input {
 }
 
 .button-submit button:hover:not(:disabled), .button-delete:hover:not(:disabled) {
-  background-color: #0056b3;
+  background-color: #198754;
 }
 
 .button-delete:hover:not(:disabled) {
@@ -476,7 +476,7 @@ input {
 }
 
 .button-signupform {
-  background-color: #007bff;
+  background-color: #198754;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -486,7 +486,7 @@ input {
 }
 
 .button-signupform:hover {
-  background-color: #0056b3;
+  background-color: #198754;
 }
 
 @media (max-width: 768px) {
